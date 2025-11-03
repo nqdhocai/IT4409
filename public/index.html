@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WebRTC Phase A - 1:1 Demo</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- Avoid favicon 404 noise -->
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <div class="app">
+    <h1>WebRTC 1:1 (Local)</h1>
+
+    <section class="controls">
+      <div class="row">
+        <button id="btnStart">Start Camera/Mic</button>
+        <button id="btnStop" disabled>Stop</button>
+      </div>
+      <div class="row">
+        <button id="btnCreate" disabled>Create Room</button>
+        <input id="roomId" placeholder="Room ID" />
+        <button id="btnJoin" disabled>Join Room</button>
+        <button id="btnLeave" disabled>Leave</button>
+      </div>
+      <div class="row small">Signaling: http://localhost:3000 · Frontend: http://localhost:8080</div>
+    </section>
+
+    <section class="videos">
+      <div class="video-col">
+        <h3>Local</h3>
+        <video id="localVideo" playsinline autoplay muted></video>
+      </div>
+      <div class="video-col">
+        <h3>Remote</h3>
+        <video id="remoteVideo" playsinline autoplay></video>
+      </div>
+    </section>
+
+    <section>
+      <h3>Logs</h3>
+      <pre id="logs" class="logs"></pre>
+    </section>
+  </div>
+
+  <!-- Socket.IO client served by signaling server to ensure version match -->
+  <script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
